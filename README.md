@@ -17,12 +17,12 @@ Gamepads and touch controls are supported. The title screen also includes a Warc
 ## Included in the vertical slice
 
 - Responsive movement with coyote time, jump buffering, and variable jump height
-- Light and heavy combat, hitstop, screen shake, damage numbers, combo pressure, stamina, and directional attack arcs
-- Invulnerable dodge, enemy telegraphs, checkpoint respawns, and low-health feedback
+- Light and heavy combat, buffered inputs, dodge-cancels, hitstop, landing response, damage numbers, combo pressure, stamina, and directional attack arcs
+- Invulnerable dodge, rewarded Emberstep perfect evades, enemy telegraphs, clean boss retries, and low-health feedback
 - Goblin scouts, hopping forest slimes, and a three-phase boss with charge and ground-wave attacks
-- Six optional ember shards, three road regions, multiple platform routes, hazards, and wayside checkpoints
+- Six optional ember shards that strengthen the blade, three road regions, multiple platform routes, hazards, and wayside checkpoints
 - Original sprite sheets, forest and gate scenes, ambient motes, synthesized sound effects, touch controls, and gamepad input
-- Responsive portrait and landscape layouts plus reduced-motion-friendly page styling
+- Persistent field records, responsive portrait and landscape layouts, coarse-pointer controls, safe-area support, and reduced-motion-aware effects
 
 ## Run locally
 

@@ -31,18 +31,32 @@ test("ships the complete combat and responsive asset set", async () => {
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
   ]);
-  for (const feature of ["dodge", "heavy", "checkpoint", "combo", "bossSpecial", "pollPad", "waves", "hitstop", "shards", "floats"]) assert.match(game, new RegExp(feature));
+  for (const feature of ["dodge", "heavy", "checkpoint", "combo", "bossSpecial", "pollPad", "waves", "hitstop", "shards", "floats", "attackBuffer", "perfectDodge", "bestTime"]) assert.match(game, new RegExp(feature));
   assert.match(game, /Math\.sign\(-dx\)===p\.face/, "attacks resolve in the player's facing direction");
   assert.match(game, /g\.checkpoint=3820/, "the boss arena has a dedicated retry checkpoint");
   assert.match(game, /gateLocked/, "the revealed boss encounter remains inside the gate arena");
   assert.match(game, /KeyM/, "keyboard audio toggle is available");
+  assert.match(game, /emberwake-muted/, "audio preference persists between sessions");
   assert.match(game, /onPointerCancel/, "touch controls release safely when gestures are interrupted");
+  assert.match(game, /g\.keys\.clear\(\)/, "focus loss clears held inputs before pausing");
   assert.match(game, /aria-label="Pause"/, "touch players can pause and resume");
+  assert.match(game, /aria-describedby="game-instructions"/, "the canvas exposes nonvisual control instructions");
+  assert.match(game, /disabled={!ready}/, "play cannot begin before animation assets are ready");
   assert.match(game, /PRESS ENTER OR JUMP TO WALK AGAIN/, "victory cannot be skipped by continued attack inputs");
+  assert.match(game, /emberwake-best-time/, "field records persist between runs");
+  assert.match(game, /FIELD GRADE/, "victory presents a replayable performance grade");
+  assert.match(game, /if\(!g\.practice\).*emberwake-best-time/s, "boss practice cannot overwrite full-route records");
+  assert.match(game, /g\.practice=true;g\.embers=3/, "boss practice starts with a representative training blade");
+  assert.match(game, /PERFECT DODGES RESTORE VIGOR/, "the skill-reward mechanic is taught in game");
+  assert.match(game, /const dodgeCancel=/, "late attack recovery can be cancelled into a dodge");
+  assert.match(game, /b\.hp=b\.maxHp/, "boss retries restart the duel cleanly");
+  assert.match(game, /if\(g\.victory\).*g\.pressed\.clear\(\);return/s, "the final clear time freezes on victory");
   assert.match(css, /max-width:760px/);
   assert.match(css, /prefers-reduced-motion/);
-  assert.match(page, /Vertical slice · v2/);
+  assert.match(css, /pointer:coarse/, "touch controls are available on coarse-pointer tablets");
+  assert.match(page, /Polished prototype · v3/);
   assert.match(layout, /og\.png/);
+  assert.match(layout, /viewportFit: "cover"/, "mobile safe areas are included in the viewport contract");
   for (const asset of ["adventurer-core-spritesheet-v1.png", "enemy-goblin-scout-spritesheet-v1.png", "enemy-forest-slime-spritesheet-v1.png", "boss-goblin-warchief-core-spritesheet-v1.png", "mossbound-road-background-v2.png", "mossbound-forest-loop-v2.png"]) {
     await access(new URL(`../public/assets/${asset}`, import.meta.url));
   }

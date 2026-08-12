@@ -6,7 +6,7 @@ export default function Home() {
       <header className="masthead">
         <div className="brand"><span>EMBER</span>WAKE</div>
         <p>Wayfarer field record / The Mossbound Road</p>
-        <div className="status"><i /> Vertical slice · v2</div>
+        <div className="status"><i /> Polished prototype · v3</div>
       </header>
       <section className="game-shell" aria-label="Emberwake action platformer">
         <GameCanvas />

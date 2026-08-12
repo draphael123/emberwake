@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cinzel, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "A playable fantasy action-platformer vertical slice. Bind the wayside embers and break the Warchief.",
   openGraph: { title: "Emberwake — The Mossbound Road", description: "Bind the wayside embers. Break the Warchief.", images: ["/og.png"] },
 };
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#101512", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body className={`${display.variable} ${body.variable} ${mono.variable}`}>{children}</body></html>;
